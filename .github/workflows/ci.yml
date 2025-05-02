@@ -1,0 +1,27 @@
+name: Run break_link.py on push
+
+on:
+  push:
+    branches: [ main ]  # Hoặc branch bạn đang làm việc
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  run-python-script:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Install dependencies
+        run: |
+          pip install -r requirements.txt || true
+          pip install requests beautifulsoup4  # Nếu dùng các thư viện phổ biến
+
+      - name: run find_break_link.py
