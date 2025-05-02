@@ -2,7 +2,7 @@ name: Run break_link.py on push
 
 on:
   push:
-    branches: [ main ]  # Hoặc branch bạn đang làm việc
+    branches: [ main ]
   pull_request:
     branches: [ main ]
 
@@ -22,7 +22,7 @@ jobs:
       - name: Install dependencies
         run: |
           pip install -r requirements.txt || true
-          pip install requests beautifulsoup4  # Nếu dùng các thư viện phổ biến
+          pip install requests beautifulsoup4
 
       - name: run find_break_link.py
         run: python break_link.py
